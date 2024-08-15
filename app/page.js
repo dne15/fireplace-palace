@@ -1,3 +1,9 @@
+import Link from 'next/link'
+ 
+export function Page() {
+  return <Link href="/dashboard">Dashboard</Link>
+}
+
 import Image from "next/image";
 import "./page.css";
 
@@ -8,6 +14,7 @@ export default function Home() {
         <img src="../images/hero-mobile.png" />
       </figure>
       <section className="bookConsultationBox">
+      
         <h2>
           Discover the <br /> Perfect Fireplace ...
         </h2>
