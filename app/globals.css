@@ -1,13 +1,18 @@
-
 body {
   max-width: 600px;
+  margin: 0;
 }
 
 h1 {
   font-size: 1.3rem;
+  margin-right: 20rem;
 }
 
-.Menu {
+Header {
+  display: flex;
+}
+
+.menuFlexBox {
   height: 100vh;
   width: 100%;
   background-color: orange;
@@ -15,6 +20,23 @@ h1 {
   position: fixed;
   padding: 0;
   margin: 0;
+  text-align: right;
+}
+
+button {
+  z-index: 101;
+  background-color: transparent;
+  border-color: transparent;
+  align-content: center;
+}
+
+.menuButtonImg {
+  height: 2rem;
+  width: 2rem;
+}
+
+nav {
+  padding: 1rem;
 }
 
 .heroImg {
