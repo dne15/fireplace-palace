@@ -12,6 +12,10 @@ export function Header() {
   console.log(menuStatus)
     }
 
+    // function menuOpen( {
+    //   {menuStatus ?  }
+    // })
+
   return (
         <header>
       <h1>🔥Fireplace Palace</h1>
@@ -32,4 +36,5 @@ export function Header() {
 }
 
 //menuStatus ? display menu : don't display menu
-// x : lines
+
+//when menus open: changes button and div opens; has 2 links 
