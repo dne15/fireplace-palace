@@ -16,7 +16,7 @@ export function Header() {
         <header>
       <h1>🔥Fireplace Palace</h1>
 
-      <button onClick={clickHandler}>button</button>
+      <button onClick={clickHandler}>{menuStatus ? <img src='../images/menu-open-button.png'></img> : <img src='../images/menu-close-button.png'></img>} </button>
     </header>
     )
 }
