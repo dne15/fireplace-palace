@@ -23,14 +23,21 @@ export function Reviews() {
     }
 return (
     <>
+    <h3 className="trustedHeader">Trusted.</h3>
+    <p className="reviewParagrapgh">We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
     <div className="reviewButtons"> 
-    <button onClick={() => displayReview("England")}className="England">England</button>
-    <button onClick={() => displayReview("Wales")} className="Wales">Wales</button>
-    <button onClick={() => displayReview("Scotland")} className="Scotland">Scotland</button>
-</div>
-<div className="reviewText">
-    {reviewData ? JSON.stringify(reviewData.text) : null}
-</div>
+    <button onClick={() => displayReview("England")}className="england">England</button>
+    <button onClick={() => displayReview("Wales")} className="wales">Wales</button>
+    <button onClick={() => displayReview("Scotland")} className="scotland">Scotland</button>
+    </div>
+    <div className="reviewText">
+        {reviewData ? JSON.stringify(reviewData.text) : null}
+    </div>
+    <div className="authorLocation">
+        {reviewData ? reviewData.author : null}
+        <br></br>
+        {reviewData ? reviewData.location : null}
+    </div>
 </>
 )
 }
