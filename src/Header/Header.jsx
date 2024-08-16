@@ -18,7 +18,6 @@ export function Header() {
   return (
     <header>
       <h1>🔥Fireplace Palace</h1>
-
       <button onClick={clickHandler}>
         {menuStatus ? (
           <img
@@ -32,17 +31,20 @@ export function Header() {
           ></img>
         )}
       </button>
-      <div className="menuFlexBox">
-        {menuStatus && (
+
+      {menuStatus && (
+        <div className={`menuFlexBox`}>
           <div className="Menu">
             <nav>
-              <Link href="/">Home</Link>
+              <Link className="homeLink" href="/">
+                Home
+              </Link>
               <br></br>
-              <Link href="/founders">Meet the Founders</Link>
+              <Link href="/Founders">Meet the Founders</Link>
             </nav>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }
