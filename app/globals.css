@@ -136,3 +136,16 @@ footer {
 a {
   color: black;
 }
+
+/* Founders Page  */
+
+.orangeBox {
+  background-color: orange;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  }
+  
+   .orangeTitle{
+      font-size: 2.5rem;
+      padding-left: 2rem;
+  }
