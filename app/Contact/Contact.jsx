@@ -1,42 +1,75 @@
+'use client'
+
 import "./Contact.css";
+import {useState} from 'react'
 
 export function ContactUs() {
+
+let [fullName, setFullName] = useState("")
+let [postcode, setPostcode] = useState("")
+let [house, setHouse] = useState("")
+let [city, setCity] = useState("")
+let [phoneNumber, setPhoneNumber] = useState("")
+let [email, setEmail] = useState("")
+
+function handleInput(event) {
+
+  if (event.target.name === 'fullName'){
+  setFullName(event.target.value)
+  } if (event.target.name === 'postcode'){
+    setPostcode(event.target.value)
+    } if (event.target.name === 'houseNumber'){
+      setHouse(event.target.value)
+      } if (event.target.name === 'city'){
+        setCity(event.target.value)
+        } if (event.target.name === 'phoneNumber'){
+          setPhoneNumber(event.target.value)
+          } if (event.target.name === 'emailAddress'){
+            setEmail(event.target.value)
+            }
+}
+console.log(fullName)
+console.log(postcode)
+console.log(house)
+console.log(city)
+console.log(phoneNumber)
+console.log(email)
   return (
     <>
       <h1 className="contactHeader">Design Booking</h1>
       <form>
         <fieldset className="personalInfo">
           <legend>Personal Information</legend>
-          <label HTMLfor="fullName">Full Name:</label> <br></br>
-          <input type="text" id="fullName" name="fullName" />
+          <label htmlFor="fullName">Full Name:</label> <br></br>
+          <input type="text" id="fullName" name="fullName" onChange={(event) => handleInput(event)} value={fullName}/>
           <br />
-          <label HTMLfor="postcode">Postcode:</label>
+          <label htmlFor="postcode">Postcode:</label>
           <br></br>
-          <input type="text" id="postcode" name="postcode" />
+          <input type="text" id="postcode" name="postcode" onChange={(event) => handleInput(event)} value={postcode} />
           <br />
-          <label HTMLfor="houseNumber">
+          <label htmlFor="houseNumber">
             House/Flat Number and Street Name:
           </label>
           <br></br>
-          <input type="text" id="houseNumber" name="houseNumber" />
+          <input type="text" id="houseNumber" name="houseNumber" onChange={(event) => handleInput(event)} value={house} />
           <br></br>
-          <label HTMLfor="city">City:</label>
+          <label htmlFor="city">City:</label>
           <br></br>
-          <input type="text" id="city" name="city" />
+          <input type="text" id="city" name="city" onChange={(event) => handleInput(event)} value={city} />
         </fieldset>
       </form>
 
       <form>
         <fieldset className="contactInfo">
           <legend>Contact Information</legend>
-          <label HTMLfor="text">Phone Number:</label>
+          <label htmlFor="text">Phone Number:</label>
           <br></br>
-          <input type="text" id="phoneNumber" name="phoneNumber" />
+          <input type="text" id="phoneNumber" name="phoneNumber" onChange={(event) => handleInput(event)} value={phoneNumber} />
           <br></br>
 
-          <label HTMLfor="text">Email Address:</label>
+          <label htmlFor="text">Email Address:</label>
           <br></br>
-          <input type="text" id="emailAddress" name="emailAddress" />
+          <input type="text" id="emailAddress" name="emailAddress"onChange={(event) => handleInput(event)} value={email} />
           <br></br>
         </fieldset>
         <button type="submit" name="button" id="buttonSubmit">
@@ -48,3 +81,5 @@ export function ContactUs() {
 }
 
 export default ContactUs;
+
+
