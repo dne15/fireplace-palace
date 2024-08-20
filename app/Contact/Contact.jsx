@@ -5,6 +5,17 @@ import {useState} from 'react'
 
 export function ContactUs() {
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (fullName === "" || postcode === "" || house === "" || city === "" || phoneNumber === "" || email === "") {
+      console.log(" Please fill in all the fields");
+    } else {
+      alert(
+        `Thank you for your submission ${fullName}. We will be in contact with you shortly`
+      );
+    }
+  }
+
 let [fullName, setFullName] = useState("")
 let [postcode, setPostcode] = useState("")
 let [house, setHouse] = useState("")
@@ -59,7 +70,7 @@ console.log(email)
         </fieldset>
       </form>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset className="contactInfo">
           <legend>Contact Information</legend>
           <label htmlFor="text">Phone Number:</label>
@@ -72,13 +83,14 @@ console.log(email)
           <input type="text" id="emailAddress" name="emailAddress"onChange={(event) => handleInput(event)} value={email} />
           <br></br>
         </fieldset>
-        <button type="submit" name="button" id="buttonSubmit">
+        <button type="submit" name="button" id="buttonSubmit" >
           Request Design Consultation
         </button>
       </form>
     </>
   );
 }
+
 
 export default ContactUs;
 
