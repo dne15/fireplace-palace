@@ -36,11 +36,17 @@ export function Header() {
         <div className={`menuFlexBox`}>
           <div className="Menu">
             <nav>
-              <Link className="homeLink" href="/">
+              <Link className="homeLink" href="/" onClick={clickHandler}>
                 Home
               </Link>
               <br></br>
-              <Link href="/Founders">Meet the Founders</Link>
+              <Link href="/Founders" onClick={clickHandler}>
+                Meet the Founders
+              </Link>
+              <br></br>
+              <Link href="/Contact" onClick={clickHandler}>
+                Contact Us
+              </Link>
             </nav>
           </div>
         </div>
@@ -49,6 +55,8 @@ export function Header() {
   );
 }
 
-//menuStatus ? display menu : don't display menu
+// menuStatus ? display menu :
+// don't display menu
 
-//when menus open: changes button and div opens; has 2 links
+// when menus open: changes button
+// and div opens; has 2 links

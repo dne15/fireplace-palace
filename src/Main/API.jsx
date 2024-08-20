@@ -21,10 +21,17 @@ export function Reviews() {
     function displayReview(country) {
         createDisplayReview(country)
     }
+
+    //Assigned data from API for specific countries
+    //Extracted relevant data from them 
+    // If reviewData = true print, if false = null 
+    //separate into divs and stringify text to get speech marks
+    //no stringify to extract inner text
 return (
     <>
     <h3 className="trustedHeader">Trusted.</h3>
-    <p className="reviewParagrapgh">We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
+    <p className="reviewParagrapgh">We've got thousands of happy customers all over the UK. 
+        Choose your country to see the latest review:</p>
     <div className="reviewButtons"> 
     <button onClick={() => displayReview("England")}className="england">England</button>
     <button onClick={() => displayReview("Wales")} className="wales">Wales</button>

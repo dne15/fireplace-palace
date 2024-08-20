@@ -1,4 +1,7 @@
 export function Card({ img, h4, p }) {
+ 
+ //assiging props to components
+
   return (
     <div>
       <img src={img} alt={h4} />

@@ -1,0 +1,17 @@
+.contactHeader {
+  background-color: orange;
+  text-align: left;
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-wrap: nowrap;
+}
+
+.personalInfo {
+  background-color: rgb(180, 174, 174);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.contactInfo {
+  background-color: rgb(180, 174, 174);
+}
