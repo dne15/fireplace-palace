@@ -1,111 +1,23 @@
 "use client";
 
 import "./Contact.css";
-// import { useState , useReducer } from "react";
-
-// export function ContactUs() {
-//   function handleSubmit(event) {
-//     event.preventDefault();
-//     if (fullName === "" ) {
-//       setError(true);
-//       setSuccess(false);
-//     } else {
-//       setError(false);
-//       setSuccess(true);
-//     }
-//   }
-//   let [error, setError] = useState();
-//   let [success, setSuccess] = useState();
-//   // let [fullName, setFullName] = useState("");
-//   let [ state , dispatch] = useReducer(reducer , initalState)
-
-//   function handleInput(event) {
-//     if (event.target.name === "fullName") {
-//       setFullName(event.target.value);
-//     }
-//   }
-
-//   let initalState = {
-//     data: {
-//        fullName: ""
-//     },
-//     error: false
-//   }
-
-//   function reducer(state, action){
-//     switch(action.type) {
-//       case  "ALL_CAPS":
-//         return {
-//             data: {
-//           ...state.data,
-//           [action.payload.fieldName]: action.payload.fieldValue
-//         },
-//         error: state.error
-//     };
-//       default: return state;
-    
-  
-//     }
-  
-
-//   console.log(fullName);
-
-//   return (
-//     <>
-//       <h1 className="contactHeader">Design Booking</h1>
-//       <form>
-//         <fieldset className="personalInfo">
-//           <legend>Personal Information</legend>
-//           <label htmlFor="fullName">Full Name:</label> <br></br>
-//           <input
-//             type="text"
-//             id="fullName"
-//             name="fullName"
-//             onChange={(event) => handleInput(event)}
-//             value={fullName}
-//           />
-//         </fieldset>
-//       </form>
-
-//       <form onSubmit={handleSubmit}>
-//         <fieldset className="contactInfo">
-//         </fieldset>
-
-//         {error && <p className="errorMessage">Please fill in all the fields</p>}
-//         {success && (
-//           <p className="successMessage">
-//             Thank you for your submission {fullName}. We will be in contact with
-//             you shortly
-//           </p>
-//         )}
-
-//         <button
-//           className="submitButton"
-//           type="submit"
-//           name="button"
-//           id="buttonSubmit"
-//         >
-//           Request Design Consultation
-//         </button>
-//       </form>
-//     </>
-//   );
-// }
-
-// export default ContactUs
-
 import React, { useReducer, useState } from 'react';
 
 const initialState = {
   data: {
-    fullName: ""
+    fullName: "",
+    postcode: "",
+    house: "",
+    city: "",
+    phoneNumber: "",
+    email: ""
   },
   error: false
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case "ALL_CAPS":
+    case "FIELD_CHANGE":
       return {
         data: {
           ...state.data,
@@ -125,20 +37,18 @@ export function ContactUs() {
   const [success, setSuccess] = useState(false);
 
   function handleInput(event) {
-    if (event.target.name === "fullName") {
       dispatch({
-        type: "ALL_CAPS",
+        type: "FIELD_CHANGE",
         payload: {
           fieldName: event.target.name,
           fieldValue: event.target.value
         }
       });
-    }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (state.data.fullName === "") {
+    if (state.data.fullName === "" || state.data.postcode === "" || state.data.house === "" || state.data.city === "" || state.data.phoneNumber === "" || state.data.email === "") {
       setError(true);
       setSuccess(false);
     } else {
@@ -160,10 +70,53 @@ export function ContactUs() {
             name="fullName"
             onChange={handleInput}
             value={state.data.fullName}
+            
           />
+          <label htmlFor="postcode">Postcode:</label> <br />
+          <input
+            type="text"
+            id="postcode"
+            name="postcode"
+            onChange={handleInput}
+            value={state.data.postcode}></input>
+          <label htmlFor="house">House/Flat Number & Street Name:</label> <br />
+          <input
+            type="text"
+            id="house"
+            name="house"
+            onChange={handleInput}
+            value={state.data.house}></input>
+            <label htmlFor="city">City:</label> <br />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            onChange={handleInput}
+            value={state.data.city}></input>
         </fieldset>
 
         <fieldset className="contactInfo">
+          <legend>Contact Information</legend>
+          <label htmlFor="text">Phone Number:</label>
+          <br></br>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            onChange={handleInput}
+            value={state.data.phoneNumber}
+          />
+          <br></br>
+
+          <label htmlFor="text">Email Address:</label>
+          <br></br>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            onChange={handleInput}
+            value={state.data.email}
+          />
         </fieldset>
 
         {error && <p className="errorMessage">Please fill in all the fields</p>}
