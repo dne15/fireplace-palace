@@ -27,6 +27,18 @@ function reducer(state, action) {
       };
     default:
       return state;
+      case "SUBMIT_STARTED":
+        return {
+            ...state,
+            loading: true,
+        };
+    case "SUBMIT_SUCCESS":
+        return {
+            ...state,
+            loading: false,
+            successMessage: "Form submitted successfully!",
+        };
+        
   }
 }
 
@@ -35,6 +47,7 @@ export function ContactUs() {
   console.log(state)
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleInput(event) {
       dispatch({
@@ -53,7 +66,12 @@ export function ContactUs() {
       setSuccess(false);
     } else {
       setError(false);
-      setSuccess(true);
+      setLoading(true);
+
+      setTimeout(() => {
+        setLoading(false);
+        setSuccess(true);
+      }, 2000); // 2 seconds delay
     }
   }
 
@@ -126,6 +144,7 @@ export function ContactUs() {
             you shortly.
           </p>
         )}
+        {loading && <p>Submitting form...</p>}
 
         <button
           className="submitButton"
