@@ -6,7 +6,7 @@
   text-wrap: nowrap;
 }
 
-.personalInfo {
+/* .personalInfo {
   background-color: rgb(180, 174, 174);
   padding: 1rem;
   margin: 1rem;
@@ -14,4 +14,55 @@
 
 .contactInfo {
   background-color: rgb(180, 174, 174);
+} */
+
+form {
+  padding: 15px;
+  margin: 0 0 0px;
+  padding-bottom: 0;
+}
+
+fieldset {
+  position: relative;
+  background: #ccc;
+  padding-top: 15px;
+  margin-top: 50px;
+  border: 0px;
+}
+
+legend {
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  font-size: 1.3rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0px;
+}
+
+input {
+  display: block;
+  width: 90%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.submitButton {
+  font-size: 1rem;
+  background: orange;
+  border: 0;
+  padding: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
 }
