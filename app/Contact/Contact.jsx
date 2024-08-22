@@ -1,7 +1,7 @@
 "use client";
 
 import "./Contact.css";
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState } from "react";
 
 const initialState = {
   data: {
@@ -10,9 +10,9 @@ const initialState = {
     house: "",
     city: "",
     phoneNumber: "",
-    email: ""
+    email: "",
   },
-  error: false
+  loading: "editing",
 };
 
 function reducer(state, action) {
@@ -21,57 +21,87 @@ function reducer(state, action) {
       return {
         data: {
           ...state.data,
-          [action.payload.fieldName]: action.payload.fieldValue
+          [action.payload.fieldName]: action.payload.fieldValue,
         },
-        error: state.error
       };
     default:
       return state;
-      case "SUBMIT_STARTED":
-        return {
-            ...state,
-            loading: true,
-        };
+    case "ERROR":
+      return {
+        ...state,
+        loading: "error",
+      };
+    case "SUBMIT_STARTED":
+      return {
+        ...state,
+        loading: true,
+      };
     case "SUBMIT_SUCCESS":
-        return {
-            ...state,
-            loading: false,
-            successMessage: "Form submitted successfully!",
-        };
-        
+      return {
+        ...state,
+        loading: false,
+        successMessage: "Form submitted successfully!",
+      };
   }
 }
 
 export function ContactUs() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state)
-  const [error, setError] = useState(false);
+  console.log(state);
+  const [, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function handleInput(event) {
-      dispatch({
-        type: "FIELD_CHANGE",
-        payload: {
-          fieldName: event.target.name,
-          fieldValue: event.target.value
-        }
-      });
+    dispatch({
+      type: "FIELD_CHANGE",
+      payload: {
+        fieldName: event.target.name,
+        fieldValue: event.target.value,
+      },
+    });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (state.data.fullName === "" || state.data.postcode === "" || state.data.house === "" || state.data.city === "" || state.data.phoneNumber === "" || state.data.email === "") {
-      setError(true);
-      setSuccess(false);
+    if (
+      state.data.fullName === "" ||
+      state.data.postcode === "" ||
+      state.data.house === "" ||
+      state.data.city === "" ||
+      state.data.phoneNumber === "" ||
+      state.data.email === ""
+    ) {
+      dispatch({
+        type: "ERROR",
+      });
+      return;
+    } else if (
+      state.data.fullName !== "" ||
+      state.data.postcode !== "" ||
+      state.data.house !== "" ||
+      state.data.city !== "" ||
+      state.data.phoneNumber !== "" ||
+      state.data.email !== ""
+    ) {
+      dispatch({
+        type: "SUBMIT_STARTED",
+        loading: "editing",
+      });
+      return;
     } else {
-      setError(false);
+      dispatch({
+        type: "SUBMIT_SUCCESS",
+      });
+
       setLoading(true);
 
       setTimeout(() => {
         setLoading(false);
         setSuccess(true);
       }, 2000); // 2 seconds delay
+
+      return;
     }
   }
 
@@ -88,7 +118,6 @@ export function ContactUs() {
             name="fullName"
             onChange={handleInput}
             value={state.data.fullName}
-            
           />
           <label htmlFor="postcode">Postcode:</label> <br />
           <input
@@ -96,21 +125,24 @@ export function ContactUs() {
             id="postcode"
             name="postcode"
             onChange={handleInput}
-            value={state.data.postcode}></input>
+            value={state.data.postcode}
+          ></input>
           <label htmlFor="house">House/Flat Number & Street Name:</label> <br />
           <input
             type="text"
             id="house"
             name="house"
             onChange={handleInput}
-            value={state.data.house}></input>
-            <label htmlFor="city">City:</label> <br />
+            value={state.data.house}
+          ></input>
+          <label htmlFor="city">City:</label> <br />
           <input
             type="text"
             id="city"
             name="city"
             onChange={handleInput}
-            value={state.data.city}></input>
+            value={state.data.city}
+          ></input>
         </fieldset>
 
         <fieldset className="contactInfo">
@@ -136,12 +168,13 @@ export function ContactUs() {
             value={state.data.email}
           />
         </fieldset>
-
-        {error && <p className="errorMessage">Please fill in all the fields</p>}
+        {state.loading === "error" && <p>Please fill in all the fields</p>}
+        {/* 
+        {error && <p className="errorMessage">Please fill in all the fields</p>} */}
         {success && (
           <p className="successMessage">
-            Thank you for your submission {state.data.fullName}. We will be in contact with
-            you shortly.
+            Thank you for your submission {state.data.fullName}. We will be in
+            contact with you shortly.
           </p>
         )}
         {loading && <p>Submitting form...</p>}
