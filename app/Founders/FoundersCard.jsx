@@ -1,3 +1,4 @@
+
 export function FounderCard({ header, description, image, altDescription }) {
   return (
     <div>

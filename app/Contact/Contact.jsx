@@ -13,6 +13,7 @@ const initialState = {
     email: "",
   },
   loading: "editing",
+  submitted: false,
 };
 
 function reducer(state, action) {
@@ -41,6 +42,7 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
+        submitted: true,
         successMessage: "Form submitted successfully!",
       };
   }
@@ -83,10 +85,10 @@ export function ContactUs() {
       setTimeout(() => {
         setLoading(false);
         setSuccess(true);
-      }, 5000); // 5 seconds delay
-      dispatch({
-        type: "SUBMIT_SUCCESS",
-      });
+        dispatch({
+          type: "SUBMIT_SUCCESS",
+        });
+      }, 2000);
 
       setLoading(true);
 
@@ -98,7 +100,8 @@ export function ContactUs() {
 
   return (
     <>
-      <h1 className="contactHeader">Design Booking</h1>
+    <div className="contactHeader">
+      <h1 >Design Booking</h1></div>
       <form onSubmit={handleSubmit}>
         <fieldset className="personalInfo">
           <legend>Personal Information</legend>
@@ -159,7 +162,7 @@ export function ContactUs() {
             value={state.data.email}
           />
         </fieldset>
-        {state.loading === "error" && <p>Please fill in all the fields</p>}
+        {state.loading === "error" && <p className="errorMessage">Error! Please fill in all the fields</p>}
         {/* 
         {error && <p className="errorMessage">Please fill in all the fields</p>} */}
         {success && (
@@ -168,7 +171,7 @@ export function ContactUs() {
             contact with you shortly.
           </p>
         )}
-        {loading && <p>Submitting form...</p>}
+        
 
         <button
           className="submitButton"
@@ -176,9 +179,10 @@ export function ContactUs() {
           name="button"
           id="buttonSubmit"
         >
-          {state.loading ? "Book design consultation" : "Submitting..."}
+          {state.submitted ? "Submitted": loading ? "Submitting..." : "Book design consultation" }
         </button>
       </form>
+      
     </>
   );
 }

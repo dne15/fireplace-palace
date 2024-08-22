@@ -1,1 +1,17 @@
-f
+.foundersCard  {
+  text-align: center;
+
+}
+
+.orangeTitle {
+    text-wrap: nowrap;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.orangeTitleName {
+    text-wrap: nowrap;
+    text-align: left;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+}
