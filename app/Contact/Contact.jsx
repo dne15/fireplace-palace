@@ -19,6 +19,7 @@ function reducer(state, action) {
   switch (action.type) {
     case "FIELD_CHANGE":
       return {
+        ...state,
         data: {
           ...state.data,
           [action.payload.fieldName]: action.payload.fieldValue,
@@ -75,31 +76,21 @@ export function ContactUs() {
       dispatch({
         type: "ERROR",
       });
-      return;
-    } else if (
-      state.data.fullName !== "" ||
-      state.data.postcode !== "" ||
-      state.data.house !== "" ||
-      state.data.city !== "" ||
-      state.data.phoneNumber !== "" ||
-      state.data.email !== ""
-    ) {
-      dispatch({
-        type: "SUBMIT_STARTED",
-        loading: "editing",
-      });
-      return;
+      if(state.loading) {
+        return;
+      }
     } else {
+      setTimeout(() => {
+        setLoading(false);
+        setSuccess(true);
+      }, 5000); // 5 seconds delay
       dispatch({
         type: "SUBMIT_SUCCESS",
       });
 
       setLoading(true);
 
-      setTimeout(() => {
-        setLoading(false);
-        setSuccess(true);
-      }, 2000); // 2 seconds delay
+      
 
       return;
     }
@@ -185,7 +176,7 @@ export function ContactUs() {
           name="button"
           id="buttonSubmit"
         >
-          Request Design Consultation
+          {state.loading ? "Book design consultation" : "Submitting..."}
         </button>
       </form>
     </>
