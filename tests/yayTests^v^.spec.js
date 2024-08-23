@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 
 
 test('submit the form and see if the message is all gucci :)', async ({ page }) => {
-  await page.goto('http://localhost:3000/Contact');
+  await page.goto('http://localhost:3000');
+  await page.locator("a:has-text('Book consultation')").click();
   await page.waitForSelector('input[name="fullName"]');
 
   await page.fill('input[name="fullName"]', 'Frank');
