@@ -1,3 +1,4 @@
+import Link from 'next/link';
 export function BookConsBox() {
     return (
         <section className="bookConsultationBox">
@@ -6,8 +7,7 @@ export function BookConsBox() {
           Perfect Fireplace ...
         </h2>
         <div>
-          <span className="bookConsultationText">Book consultation:</span>
-          <span className="phoneNumber">0121 345 6789</span>
+          <Link href="/Contact" className="bookConsultationText">Book consultation</Link>
         </div>
       </section>
     )
