@@ -88,7 +88,7 @@ export function ContactUs() {
         dispatch({
           type: "SUBMIT_SUCCESS",
         });
-      }, 2000);
+      }, 2000 );
 
       setLoading(true);
 
