@@ -23,13 +23,19 @@ export function Header() {
       <button onClick={clickHandler} className="menuButton">
         {menuStatus ? (
           <Image
-            src="../images/menu-close-button.png"
-            className="menuButtonImg" alt="menu close button"
+            src="/images/menu-close-button.png"
+            className="menuButtonImg"
+            alt="menu close button"
+            width={100}
+            height={100}
           />
         ) : (
           <Image
-            src="../images/menu-open-button.png"
-            className="menuButtonImg" alt="menu open button"
+            src="/images/menu-open-button.png"
+            className="menuButtonImg"
+            alt="menu open button"
+            width={100}
+            height={100}
           />
         )}
       </button>
