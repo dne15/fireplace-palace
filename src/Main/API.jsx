@@ -30,7 +30,7 @@ export function Reviews() {
 return (
     <>
     <h3 className="trustedHeader">Trusted.</h3>
-    <p className="reviewParagrapgh">We've got thousands of happy customers all over the UK. 
+    <p className="reviewParagrapgh">We&apos;ve got thousands of happy customers all over the UK. 
         Choose your country to see the latest review:</p>
     <div className="reviewButtons"> 
     <button onClick={() => displayReview("England")}className="england">England</button>

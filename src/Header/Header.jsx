@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image';
+
 
 import Link from "next/link";
 import { useState } from "react";
@@ -20,15 +22,15 @@ export function Header() {
       <h1>🔥Fireplace Palace</h1>
       <button onClick={clickHandler} className="menuButton">
         {menuStatus ? (
-          <img
+          <Image
             src="../images/menu-close-button.png"
-            className="menuButtonImg"
-          ></img>
+            className="menuButtonImg" alt="menu close button"
+          />
         ) : (
-          <img
+          <Image
             src="../images/menu-open-button.png"
-            className="menuButtonImg"
-          ></img>
+            className="menuButtonImg" alt="menu open button"
+          />
         )}
       </button>
 

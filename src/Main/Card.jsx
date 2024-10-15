@@ -1,10 +1,12 @@
+import Image from 'next/image';
+
 export function Card({ img, h4, p }) {
  
  //assiging props to components
 
   return (
     <div>
-      <img src={img} alt={h4} />
+      <Image src={img} alt={h4} />
       <h4>{h4}</h4>
       <p>{p}</p>
     </div>

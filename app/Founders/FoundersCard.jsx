@@ -1,3 +1,4 @@
+import Image from 'next/image';
 
 export function FounderCard({ header, description, image, altDescription }) {
   return (
@@ -5,7 +6,7 @@ export function FounderCard({ header, description, image, altDescription }) {
       <h3>{header}</h3>
       <p>{description}</p>
       <figure>
-        <img src={image} alt={altDescription} />
+        <Image src={image} alt={altDescription} />
       </figure>
     </div>
   );

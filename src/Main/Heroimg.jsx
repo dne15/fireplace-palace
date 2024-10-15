@@ -1,7 +1,9 @@
+import Image from 'next/image';
+
 export function Heroimg() {
   return (
     <figure className="heroimg">
-      <img src="../images/hero-mobile.png" />
+      <Image src="../images/hero-mobile.png" alt='hero image' />
     </figure>
   );
 }
