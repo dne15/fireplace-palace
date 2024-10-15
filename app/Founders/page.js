@@ -10,7 +10,7 @@ export default function FoundersPage() {
         <h1 className="orangeTitle">Meet the artisans <br></br>behind our masterpieces!</h1>
         <h2 className ="orangeTitleName">Mike and Mandy</h2>
         <figure>
-          <Image src="../images/founder-mike-and-mandy.png" alt="founders image"/>
+          <Image src="/images/founder-mike-and-mandy.png" alt="founders image" width={300} height={400}/>
         </figure>
       </section>
       <FoundersData />
